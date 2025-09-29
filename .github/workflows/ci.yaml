@@ -28,6 +28,9 @@ jobs:
       - name: Run tests
         run: pytest
 
+      - name: Unshallow fetch
+        run: git fetch --unshallow
+
       - name: Deploy to Hugging Face Spaces
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && success() }}
         env:
