@@ -9,6 +9,7 @@ joblib
 numpy
 pandas
 scipy
+gradio
 
 # Base de données
 sqlalchemy
