@@ -1,3 +1,14 @@
+---
+title: Deployez Modele ML
+emoji: 📊
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 3.50.2
+app_file: app.py
+pinned: false
+---
+
 # Déploiement d’un modèle de machine learning
 
 ## Description
