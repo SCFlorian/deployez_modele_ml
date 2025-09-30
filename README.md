@@ -55,3 +55,9 @@ Une authentification par token et la gestion des secrets via .env seront mises e
 
 ## Historique
 - v1.0 : Mise en place de la structure de base (requirements, README, organisation des dossiers)
+
+## Gestion des environnements
+- Développement : travail en local sur des branches dédiées (`model`, `notebooks`).  
+- Test : exécution automatique des tests unitaires via GitHub Actions à chaque push.  
+- Production : la branche `main` est déployée automatiquement sur Hugging Face Spaces.
+- La fusion vers `main` se fait uniquement via une **Pull Request** validée.
