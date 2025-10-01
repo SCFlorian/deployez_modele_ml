@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import numpy as np
+import pandas as pd
 
 # Charger le modèle entraîné
 model = joblib.load("models/final_model.pkl")
@@ -59,7 +60,7 @@ app = FastAPI()
 
 @app.post("/predict")
 def predict(features: EmployeeFeatures):
-    data = pd.DataFrame([features.dict()])
+    data = pd.DataFrame([features.model_dump()])
     proba = model.predict_proba(data)[:, 1][0]
     prediction = int(proba >= threshold)
     return {"prediction": prediction, "probability": float(proba)}
