@@ -59,7 +59,7 @@ app = FastAPI()
 
 @app.post("/predict")
 def predict(features: EmployeeFeatures):
-    data = np.array([list(features.dict().values())])
+    data = pd.DataFrame([features.dict()])
     proba = model.predict_proba(data)[:, 1][0]
     prediction = int(proba >= threshold)
     return {"prediction": prediction, "probability": float(proba)}
