@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-import numpy as np
 import pandas as pd
 
 # Charger le modèle entraîné
@@ -9,7 +8,7 @@ model = joblib.load("models/final_model.pkl")
 with open("models/threshold.txt", "r") as f:
     threshold = float(f.read())
 
-# Définition des features attendues (43 colonnes sauf la cible)
+# Définition des features attendues
 class EmployeeFeatures(BaseModel):
     revenu_mensuel: int
     annees_dans_l_entreprise: int
@@ -56,11 +55,30 @@ class EmployeeFeatures(BaseModel):
     domaine_etude_RessourcesHumaines: int
     domaine_etude_TransformationDigitale: int
 
-app = FastAPI()
 
+# Initialisation FastAPI
+app = FastAPI(
+    title="API de Prédiction RH",
+    description="Prédit si un employé risque de quitter l’entreprise",
+    version="1.0"
+)
+
+# Endpoint racine pour vérifier que l'API tourne
+@app.get("/")
+def home():
+    return {"message": "Bienvenue sur l'API. Utilisez /predict avec un POST pour obtenir une prédiction."}
+
+# Endpoint de prédiction
 @app.post("/predict")
 def predict(features: EmployeeFeatures):
+    # Transformer les données en DataFrame
     data = pd.DataFrame([features.model_dump()])
+
+    # Prédiction
     proba = model.predict_proba(data)[:, 1][0]
     prediction = int(proba >= threshold)
-    return {"prediction": prediction, "probability": float(proba)}
+
+    return {
+        "prediction": prediction,
+        "probability": round(float(proba), 4)
+    }
