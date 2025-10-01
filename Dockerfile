@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copie des fichiers nécessaires
 COPY requirements.txt .
-COPY app.py .
+COPY api/app.py ./app.py
 COPY models/ ./models/
 
 # Installation des dépendances système minimales
