@@ -70,6 +70,11 @@ app = FastAPI(
 def home():
     return {"message": "Bienvenue sur l'API. Utilisez /predict avec un POST pour obtenir une prédiction."}
 
+@app.get("/ping")
+def ping():
+    return {"status": "ok", "message": "API en ligne et prête !"}
+
+
 # Endpoint de prédiction
 @app.post("/predict")
 def predict(features: EmployeeFeatures):
