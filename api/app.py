@@ -63,7 +63,7 @@ app = FastAPI(
     version="1.0",
     docs_url="/docs",
     redoc_url="/redoc",
-    root_path="/"
+    root_path="/proxy/7860"
 )
 
 # Endpoint racine pour vérifier que l'API tourne
