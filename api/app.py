@@ -62,7 +62,8 @@ app = FastAPI(
     description="Prédit si un employé risque de quitter l’entreprise",
     version="1.0",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    root_path="/"
 )
 
 # Endpoint racine pour vérifier que l'API tourne
