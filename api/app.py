@@ -60,7 +60,9 @@ class EmployeeFeatures(BaseModel):
 app = FastAPI(
     title="API de Prédiction RH",
     description="Prédit si un employé risque de quitter l’entreprise",
-    version="1.0"
+    version="1.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
 # Endpoint racine pour vérifier que l'API tourne
