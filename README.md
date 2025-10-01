@@ -3,8 +3,6 @@ title: Deployez Modele ML
 emoji: 📊
 colorFrom: blue
 colorTo: purple
-sdk: fastapi
-app_file: api/app.py
 pinned: false
 ---
 
