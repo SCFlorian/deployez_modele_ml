@@ -3,6 +3,8 @@ title: Deployez Modele ML
 emoji: 📊
 colorFrom: blue
 colorTo: purple
+sdk: docker
+app_file: api/app.py
 pinned: false
 ---
 
