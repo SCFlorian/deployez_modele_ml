@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copie des fichiers nécessaires
 COPY requirements.txt .
-COPY api/app.py ./app.py
+COPY api/ ./api/
 COPY models/ ./models/
 
 # Installation des dépendances système minimales
@@ -22,4 +22,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 7860
 
 # Lancement de l'API
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "7860"]
